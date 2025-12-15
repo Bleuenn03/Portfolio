@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du Projet - Flashs de Tatouages</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .tattoo-grid-large {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .tattoo-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .tattoo-grid-small img, .tattoo-grid-large img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .tattoo-grid-small img:hover, .tattoo-grid-large img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Titre des sous-sections */
+        .sub-gallery-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--palette-dark);
+            margin-top: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">Votre Nom</a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="projets.html" class="active">Projets</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div id="menu-icon" class="fas fa-bars"></div>
+    </header>
+
+    <main class="project-detail-main">
+        
+        <div class="back-btn-container">
+            <a href="projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+        </div>
+
+        <nav class="projects-categories category-detail-page">
+            <a href="projets.html#cat-2d">Créations 2D</a>
+            <a href="projets.html#cat-3d">Création 3D</a>
+            <a href="projets.html#cat-perso">Projets Personnels</a>
+            <a href="projets.html#cat-tattoo">Flash de Tatouages</a>
+            <a href="projets.html#cat-audiovisuel">Audio Visuel</a>
+            <a href="projets.html#cat-motion">Motion Design</a>
+            <a href="projets.html#cat-gamejam">Game Jam</a>
+        </nav>
+
+        <section class="detail-content">
+            <h1>Galerie de Flashs de Tatouages</h1>
+            
+            <p class="subtitle">Catégorie : Flash de Tatouages</p>
+
+            <div class="project-description">
+                <p>
+                    Cette galerie présente une sélection de mes créations de flashs, conçues pour être des motifs de tatouage uniques.
+                    Mes designs explorent différents styles, allant du *fineline* au *dotwork*, avec une attention particulière aux thèmes [Ex: Nature, Esotérisme, Géométrie].
+                </p>
+            </div>
+            
+            <h2 class="sub-gallery-title">Flashs Coup de Coeur (4 Images)</h2>
+            <div class="tattoo-grid-large">
+                <img src="assets/tattoo/flash-grand-1.jpg" alt="Flash Tattoo 1" loading="lazy">
+                <img src="assets/tattoo/flash-grand-2.jpg" alt="Flash Tattoo 2" loading="lazy">
+                <img src="assets/tattoo/flash-grand-3.jpg" alt="Flash Tattoo 3" loading="lazy">
+                <img src="assets/tattoo/flash-grand-4.jpg" alt="Flash Tattoo 4" loading="lazy">
+            </div>
+
+            <h2 class="sub-gallery-title">Autres Créations Numériques (10 Images)</h2>
+            <div class="tattoo-grid-small">
+                <img src="assets/tattoo/flash-petit-5.jpg" alt="Flash Tattoo 5" loading="lazy">
+                <img src="assets/tattoo/flash-petit-6.jpg" alt="Flash Tattoo 6" loading="lazy">
+                <img src="assets/tattoo/flash-petit-7.jpg" alt="Flash Tattoo 7" loading="lazy">
+                <img src="assets/tattoo/flash-petit-8.jpg" alt="Flash Tattoo 8" loading="lazy">
+                <img src="assets/tattoo/flash-petit-9.jpg" alt="Flash Tattoo 9" loading="lazy">
+                <img src="assets/tattoo/flash-petit-10.jpg" alt="Flash Tattoo 10" loading="lazy">
+                <img src="assets/tattoo/flash-petit-11.jpg" alt="Flash Tattoo 11" loading="lazy">
+                <img src="assets/tattoo/flash-petit-12.jpg" alt="Flash Tattoo 12" loading="lazy">
+                <img src="assets/tattoo/flash-petit-13.jpg" alt="Flash Tattoo 13" loading="lazy">
+                <img src="assets/tattoo/flash-petit-14.jpg" alt="Flash Tattoo 14" loading="lazy">
+            </div>
+
+            <h2 class="sub-gallery-title">Flashs Dessinés sur Papier (4 Images)</h2>
+            <div class="tattoo-grid-large">
+                <img src="assets/tattoo/flash-papier-1.jpg" alt="Flash Papier 1" loading="lazy">
+                <img src="assets/tattoo/flash-papier-2.jpg" alt="Flash Papier 2" loading="lazy">
+                <img src="assets/tattoo/flash-papier-3.jpg" alt="Flash Papier 3" loading="lazy">
+                <img src="assets/tattoo/flash-papier-4.jpg" alt="Flash Papier 4" loading="lazy">
+            </div>
+
+            <div class="project-buttons" style="text-align: center; margin-top: 50px;">
+                 <a href="contact.html" class="btn">Me Contacter pour un Flash</a>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

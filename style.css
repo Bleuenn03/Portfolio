@@ -1,0 +1,361 @@
+/* ------------------------------------- */
+/* 1. RÉINITIALISATION ET PALETTE */
+/* ------------------------------------- */
+:root {
+    --palette-cream: #F2EBE5;
+    --palette-blue: #647295;
+    --palette-berry: #9F496E;
+    --palette-dark: #2B262D;
+    --text-light: #ffffff;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+    /* Hauteur approximative du header pour les calculs */
+    --header-height: 80px; 
+}
+
+html {
+    /* C'EST ICI LA CLÉ DU FIX : */
+    scroll-behavior: smooth;
+    /* Quand on clique sur une ancre, on laisse de la place pour le header */
+    scroll-padding-top: 130px; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: var(--palette-cream);
+    color: var(--palette-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--palette-blue);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--palette-berry);
+}
+
+/* Sections générales */
+section {
+    padding: 40px 10%; /* Réduit un peu pour éviter les trop grands vides */
+    min-height: auto;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--palette-blue);
+    position: relative;
+    padding-top: 20px;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--palette-berry);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Boutons */
+.btn, .btn-projet {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--palette-blue);
+    color: var(--text-light);
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(100, 114, 149, 0.3);
+    transition: all var(--transition-speed);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover, .btn-projet:hover {
+    background-color: var(--palette-berry);
+    transform: translateY(-2px);
+    color: var(--text-light);
+}
+
+/* ------------------------------------- */
+/* 2. HEADER FIXE */
+/* ------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 10%;
+    background: var(--palette-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Le plus haut niveau */
+    box-shadow: 0 2px 15px rgba(43, 38, 45, 0.15);
+    height: var(--header-height);
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    font-weight: 700;
+}
+
+.navbar a {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 2rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--text-light);
+}
+
+.navbar a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--palette-berry);
+    border-radius: 50%;
+}
+
+#menu-icon {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    display: none;
+}
+
+/* ------------------------------------- */
+/* 3. ACCUEIL */
+/* ------------------------------------- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 140px; /* Espace pour le header */
+    min-height: 90vh;
+    padding-bottom: 60px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--palette-blue);
+}
+
+.hero-image img {
+    max-width: 350px;
+    height: auto;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    border: 4px solid var(--palette-berry);
+    box-shadow: 0 10px 30px rgba(159, 73, 110, 0.2);
+}
+
+/* Timeline */
+.parcours-section { background-color: #fff; }
+.timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+.timeline::after {
+    content: ''; position: absolute; width: 4px; background-color: var(--palette-blue);
+    top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px;
+}
+.timeline-item { padding: 20px 40px; position: relative; width: 50%; }
+.timeline-item::after {
+    content: ''; position: absolute; width: 20px; height: 20px; right: -10px;
+    background-color: var(--palette-cream); border: 4px solid var(--palette-berry);
+    top: 20px; border-radius: 50%; z-index: 1;
+}
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+.timeline-item:nth-child(even)::after { left: -10px; }
+.timeline-item h3 { margin-bottom: 10px; color: var(--palette-blue); }
+
+/* Compétences */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.skill-item {
+    background: var(--card-bg); padding: 40px 20px; border-radius: var(--border-radius);
+    text-align: center; box-shadow: 0 5px 15px rgba(43, 38, 45, 0.05);
+    transition: transform var(--transition-speed);
+}
+.skill-item:hover { transform: translateY(-7px); }
+.skill-item i { font-size: 3.5em; color: var(--palette-berry); margin-bottom: 20px; }
+
+/* Contact */
+.contact-section { text-align: center; background: #fff; }
+.social-links a { font-size: 2.2em; margin: 0 15px; color: var(--palette-blue); }
+.social-links a:hover { color: var(--palette-berry); }
+.footer { text-align: center; padding: 30px 10%; background: var(--palette-dark); color: var(--palette-cream); }
+
+/* ------------------------------------- */
+/* 4. PROJETS (Navigation & Grille) */
+/* ------------------------------------- */
+.main-projets {
+    padding-top: 120px; /* On descend le contenu */
+}
+
+.main-projets h1 {
+    text-align: center; font-size: 3em; margin-bottom: 20px; color: var(--palette-blue);
+}
+
+/* --- BARRE DE CATÉGORIES "PLEINE LARGEUR" --- */
+.projects-categories {
+    /* 1. Dimensions et Position */
+    width: 100%;               /* Prend toute la largeur de l'écran */
+    background-color: #fff;    /* Fond blanc opaque */
+    padding: 15px 0;           /* Espace en haut et en bas des liens */
+    margin: 0 0 40px 0;        /* Marge en bas pour ne pas coller au contenu */
+    
+    /* 2. Effet "Sticky" (Reste collé en haut) */
+    position: sticky;          
+    top: 75px;                 /* S'arrête juste sous le header (ajuste ce chiffre si besoin) */
+    z-index: 900;              /* Reste au-dessus du contenu mais sous le header */
+    
+    /* 3. Style Visuel */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Légère ombre en bas pour détacher du fond */
+    border-radius: 0;          /* On enlève les bords ronds */
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    
+    /* 4. Alignement des liens */
+    display: flex;
+    justify-content: center;   /* Centre les catégories au milieu */
+    align-items: center;
+    flex-wrap: wrap;           /* Permet de passer à la ligne proprement si besoin sur PC */
+    gap: 5px;                  /* Espace entre les boutons */
+    
+    /* Reset des anciennes propriétés de centrage */
+    left: auto;
+    transform: none;
+}
+
+/* Ajustement des liens à l'intérieur */
+.projects-categories a {
+    margin: 5px;               /* Un peu d'espace autour de chaque bouton */
+    font-size: 0.95em;
+    border: 1px solid transparent; /* Prévient le décalage au survol */
+}
+
+/* --- VERSION MOBILE --- */
+@media (max-width: 992px) {
+    .projects-categories {
+        justify-content: flex-start; /* Aligne à gauche pour permettre le scroll */
+        flex-wrap: nowrap;           /* Force tout sur une seule ligne */
+        overflow-x: auto;            /* Active le scroll horizontal au doigt */
+        padding: 15px 20px;          /* Espace sur les côtés */
+        top: 60px;                   /* Ajustement car le header est souvent plus petit sur mobile */
+        
+        /* Astuce pour scroller fluide sur mobile */
+        -webkit-overflow-scrolling: touch; 
+        scrollbar-width: none;       /* Cache la barre de scroll (Firefox) */
+    }
+    
+    /* Cache la barre de scroll (Chrome/Safari) */
+    .projects-categories::-webkit-scrollbar { display: none; }
+}
+
+.projects-categories a:hover {
+    background-color: var(--palette-cream);
+    color: var(--palette-berry);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(43, 38, 45, 0.08);
+    transition: transform 0.3s;
+}
+
+.project-card:hover { transform: translateY(-7px); }
+.project-card img { width: 100%; height: 220px; object-fit: cover; }
+.project-card-content { padding: 25px; }
+
+/* ------------------------------------- */
+/* 5. RESPONSIVE MOBILE */
+/* ------------------------------------- */
+@media (max-width: 992px) {
+    .header { padding: 1rem 5%; }
+    section { padding: 60px 5%; }
+    
+    #menu-icon { display: block; }
+    
+    .navbar {
+        position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--palette-blue); padding: 1rem 0;
+        display: none; flex-direction: column;
+    }
+    .navbar.active { display: flex; }
+    .navbar a { margin: 1rem 0; text-align: center; }
+
+    .hero-section {
+        flex-direction: column-reverse; padding-top: 100px; text-align: center;
+    }
+    .hero-image img { max-width: 280px; margin-bottom: 40px; }
+    
+    /* Ajustement Timeline Mobile */
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; }
+    .timeline-item:nth-child(even) { left: 0%; }
+    .timeline-item::after { left: 18px; }
+
+    /* Ajustement Menu Catégories Mobile */
+    .projects-categories {
+        width: 95%;
+        border-radius: 15px;
+        top: 85px; /* Ajustement sticky mobile */
+        padding: 10px 5px;
+        display: flex; /* Flex pour scroll */
+        transform: translateX(0); /* Reset du centrage absolu */
+        left: 2.5%; /* Petit hack de centrage mobile */
+        overflow-x: scroll; /* Permet de scroller horizontalement les catégories */
+        justify-content: flex-start;
+    }
+    
+    /* Pour cacher la barre de scroll moche sur mobile */
+    .projects-categories::-webkit-scrollbar { display: none; }
+    .projects-categories { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Embed container (Sketchfab/Youtube) */
+.embed-container {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+    background: #eee; margin-bottom: 20px; border-radius: 12px;
+}
+.embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Style détails projet */
+.project-detail-main { padding-top: 150px; width: 90%; max-width: 1100px; margin: 0 auto; }
+.back-btn-container { margin-bottom: 30px; }
+.project-description { margin-bottom: 60px; font-size: 1.1em; }
+.project-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
