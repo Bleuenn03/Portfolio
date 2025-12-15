@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du Projet - Audio Visuel</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .video-project-block {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 70px;
+            align-items: flex-start; /* Aligne le haut du texte avec le haut de la vidéo */
+            flex-wrap: wrap; /* Permet le passage à la ligne sur mobile */
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            flex: 2; /* Prend plus de place (2/3) */
+            min-width: 300px; /* Taille minimale pour la vidéo */
+        }
+
+        .description-container {
+            flex: 1; /* Prend moins de place (1/3) */
+            padding-top: 5px; /* Petit décalage pour l'esthétique */
+        }
+        
+        .description-container h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.6em;
+            color: var(--palette-berry);
+        }
+        
+        /* Assure que sur petit écran, tout passe en colonne */
+        @media (max-width: 900px) {
+            .video-project-block {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .video-container, .description-container {
+                flex: none; /* Désactive le flex */
+                width: 100%; /* Prend toute la largeur */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">Votre Nom</a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="projets.html" class="active">Projets</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div id="menu-icon" class="fas fa-bars"></div>
+    </header>
+
+    <main class="project-detail-main">
+        
+        <div class="back-btn-container">
+            <a href="projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+        </div>
+
+        <nav class="projects-categories category-detail-page">
+            <a href="projets.html#cat-2d">Créations 2D</a>
+            <a href="projets.html#cat-3d">Création 3D</a>
+            <a href="projets.html#cat-perso">Projets Personnels</a>
+            <a href="projets.html#cat-tattoo">Flash de Tatouages</a>
+            <a href="projets.html#cat-audiovisuel">Audio Visuel</a>
+            <a href="projets.html#cat-motion">Motion Design</a>
+            <a href="projets.html#cat-gamejam">Game Jam</a>
+        </nav>
+
+        <section class="detail-content">
+            <h1>Mes Projets Audio Visuels</h1>
+            
+            <p class="subtitle">Montage Vidéo, Réalisation, Étalonnage</p>
+
+            <div class="video-project-block">
+                
+                <div class="video-container">
+                    <div class="embed-container">
+                        <iframe width="560" height="315" 
+                            src="https://www.youtube.com/embed/sMRKAHhjP84?si=JR4f7loUPbFYVbWb 
+                            title="Aubralis - Court Métrage" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="description-container">
+                    <h2>B-Roll</h2>
+                    <p>
+                        <strong>Rôle :</strong> Réalisateur, Monteur et Étalonneur.
+                    </p>
+                    <p>
+                        Réalisation d'un B-Roll ayant pour objet : le bouquet de fleur et le thème : Halloween dans le cadre d'un projet à l'IUT de Béziers. Le défi était de réaliser un b-roll dynamique et esthétique.
+                    </p>
+                    <p>
+                
+                        **Durée :** [00:38]
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="video-project-block">
+                
+                <div class="video-container">
+                    <div class="embed-container">
+                        <iframe width="560" height="315" 
+                            src="https://vimeo.com/watch" 
+                            title="Titre de la deuxième vidéo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="description-container">
+                    <h2>Nom de la Vidéo (Projet 2)</h2>
+                    <p>
+                        <strong>Rôle :</strong> Monteur principal et Sound Designer.
+                    </p>
+                    <p>
+                        Projet personnel sur le thème de [Décrire le thème]. J'ai géré l'intégralité du montage et du mixage audio pour créer une ambiance [décrire l'ambiance].
+                    </p>
+                    <p>
+                        **Logiciels :** DaVinci Resolve, Audition.
+                        **Durée :** [1:20]
+                    </p>
+                    <div class="project-buttons">
+                        <a href="[Lien vers la vidéo complète sur YouTube/Vimeo]" target="_blank" class="btn">Voir sur la plateforme</a>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
