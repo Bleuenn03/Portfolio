@@ -155,6 +155,7 @@ section {
     justify-content: space-between;
     padding-top: 140px; /* Espace pour le header */
     min-height: 90vh;
+   
     padding-bottom: 60px;
 }
 
@@ -165,7 +166,8 @@ section {
 }
 
 .hero-image img {
-    max-width: 350px;
+    width: 100%;
+    max-width: 450px;
     height: auto;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     border: 4px solid var(--palette-berry);
@@ -222,59 +224,76 @@ section {
     text-align: center; font-size: 3em; margin-bottom: 20px; color: var(--palette-blue);
 }
 
-/* --- BARRE DE CATÉGORIES "PLEINE LARGEUR" --- */
+/* ------------------------------------- */
+/* --- BARRE DE CATÉGORIES "PLEINE LARGEUR" & WRAPPING MOBILE --- */
+/* ------------------------------------- */
 .projects-categories {
     /* 1. Dimensions et Position */
-    width: 100%;               /* Prend toute la largeur de l'écran */
+    width: 100%;             /* Prend toute la largeur de l'écran */
     background-color: #fff;    /* Fond blanc opaque */
-    padding: 15px 0;           /* Espace en haut et en bas des liens */
-    margin: 0 0 40px 0;        /* Marge en bas pour ne pas coller au contenu */
+    padding: 15px 10%;           /* Espace en haut/bas (laisse des marges sur les côtés) */
+    margin: 0 0 40px 0;          /* Marge en bas pour ne pas coller au contenu */
     
     /* 2. Effet "Sticky" (Reste collé en haut) */
-    position: sticky;          
-    top: 75px;                 /* S'arrête juste sous le header (ajuste ce chiffre si besoin) */
-    z-index: 900;              /* Reste au-dessus du contenu mais sous le header */
+    position: sticky;            
+    top: 75px;                   /* S'arrête juste sous le header */
+    z-index: 900;                /* Reste au-dessus du contenu */
     
     /* 3. Style Visuel */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Légère ombre en bas pour détacher du fond */
-    border-radius: 0;          /* On enlève les bords ronds */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Légère ombre */
+    border-radius: 0;            
     border-bottom: 1px solid rgba(0,0,0,0.05);
     
-    /* 4. Alignement des liens */
+    /* 4. Alignement des liens (Maintient le centrage sur PC et permet le wrap) */
     display: flex;
-    justify-content: center;   /* Centre les catégories au milieu */
+    justify-content: center;     /* Centre les catégories au milieu */
     align-items: center;
-    flex-wrap: wrap;           /* Permet de passer à la ligne proprement si besoin sur PC */
-    gap: 5px;                  /* Espace entre les boutons */
+    flex-wrap: wrap;             /* LA CLÉ : Permet de passer à la ligne sur toutes les tailles d'écran */
+    gap: 5px;                    /* Espace entre les boutons */
     
-    /* Reset des anciennes propriétés de centrage */
+    /* S'assurer que le scroll est désactivé par défaut */
+    overflow-x: visible; 
     left: auto;
     transform: none;
 }
 
 /* Ajustement des liens à l'intérieur */
 .projects-categories a {
-    margin: 5px;               /* Un peu d'espace autour de chaque bouton */
+    margin: 5px;                 /* Un peu d'espace autour de chaque bouton */
     font-size: 0.95em;
-    border: 1px solid transparent; /* Prévient le décalage au survol */
+    border: 1px solid transparent; 
+    /* Réutilisation du style de bouton de vos autres classes */
+    background: var(--palette-blue);
+    color: var(--text-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    white-space: nowrap; /* Maintient le texte du bouton sur une ligne */
+    transition: background var(--transition-speed);
 }
+/* Styles de survol, si vous les aviez dans votre style.css */
+/*
+.projects-categories a:hover,
+.projects-categories a.active {
+    background: var(--palette-berry);
+}
+*/
 
-/* --- VERSION MOBILE --- */
+
+/* --- VERSION MOBILE (Optimisation du wrapping et du sticky top) --- */
 @media (max-width: 992px) {
     .projects-categories {
-        justify-content: flex-start; /* Aligne à gauche pour permettre le scroll */
-        flex-wrap: nowrap;           /* Force tout sur une seule ligne */
-        overflow-x: auto;            /* Active le scroll horizontal au doigt */
-        padding: 15px 20px;          /* Espace sur les côtés */
-        top: 60px;                   /* Ajustement car le header est souvent plus petit sur mobile */
+        justify-content: center; /* Maintient les boutons centrés même s'ils s'étalent sur plusieurs lignes */
+        flex-wrap: wrap;         /* Assure le passage à la ligne (annule l'ancien 'nowrap') */
+        overflow-x: visible;     /* Désactive le défilement horizontal (annule l'ancien 'auto') */
+        padding: 15px 10px;      /* Un peu moins de padding pour maximiser l'espace pour les boutons */
+        top: 60px;               /* Ajustement pour le header mobile */
         
-        /* Astuce pour scroller fluide sur mobile */
-        -webkit-overflow-scrolling: touch; 
-        scrollbar-width: none;       /* Cache la barre de scroll (Firefox) */
+        /* Retire les propriétés de masquage de scrollbar (elles ne sont plus nécessaires) */
+        -webkit-overflow-scrolling: auto; 
+        scrollbar-width: auto;
     }
     
-    /* Cache la barre de scroll (Chrome/Safari) */
-    .projects-categories::-webkit-scrollbar { display: none; }
+    .projects-categories::-webkit-scrollbar { display: auto; } /* Retour à la normale */
 }
 
 .projects-categories a:hover {
