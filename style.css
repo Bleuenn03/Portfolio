@@ -279,23 +279,6 @@ section {
 */
 
 
-/* --- VERSION MOBILE (Optimisation du wrapping et du sticky top) --- */
-@media (max-width: 992px) {
-    .projects-categories {
-        justify-content: center; /* Maintient les boutons centrés même s'ils s'étalent sur plusieurs lignes */
-        flex-wrap: wrap;         /* Assure le passage à la ligne (annule l'ancien 'nowrap') */
-        overflow-x: visible;     /* Désactive le défilement horizontal (annule l'ancien 'auto') */
-        padding: 15px 10px;      /* Un peu moins de padding pour maximiser l'espace pour les boutons */
-        top: 60px;               /* Ajustement pour le header mobile */
-        
-        /* Retire les propriétés de masquage de scrollbar (elles ne sont plus nécessaires) */
-        -webkit-overflow-scrolling: auto; 
-        scrollbar-width: auto;
-    }
-    
-    .projects-categories::-webkit-scrollbar { display: auto; } /* Retour à la normale */
-}
-
 .projects-categories a:hover {
     background-color: var(--palette-cream);
     color: var(--palette-berry);
@@ -320,61 +303,135 @@ section {
 .project-card img { width: 100%; height: 220px; object-fit: cover; }
 .project-card-content { padding: 25px; }
 
+/* Conteneur de l'iframe Sketchfab / Youtube */
+.embed-container {
+    position: relative;
+    /* On passe de 56.25% (16:9) à 75% (4:3) pour donner plus de hauteur */
+    padding-bottom: 65%; 
+    height: 0;
+    overflow: hidden;
+    max-width: 100%; /* Prend toute la largeur disponible du parent */
+    background: #000;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- OPTIMISATION PC --- */
+@media (min-width: 993px) {
+    .full-image-container {
+        max-width: 900px; /* On définit une largeur confortable pour PC */
+        margin: 0 auto;   /* On centre le tout */
+    }
+    
+    .embed-container {
+        /* Sur PC, on peut encore augmenter la hauteur pour un effet "Waouh" */
+        padding-bottom: 550px; 
+        height: 550px; 
+    }
+}
+
 /* ------------------------------------- */
-/* 5. RESPONSIVE MOBILE */
+/* 5. RESPONSIVE MOBILE (CORRIGÉ & UNIFIÉ) */
 /* ------------------------------------- */
 @media (max-width: 992px) {
+    /* --- HEADER & NAV --- */
     .header { padding: 1rem 5%; }
     section { padding: 60px 5%; }
-    
     #menu-icon { display: block; }
     
     .navbar {
         position: absolute; top: 100%; left: 0; width: 100%;
         background: var(--palette-blue); padding: 1rem 0;
         display: none; flex-direction: column;
+        z-index: 1100;
     }
     .navbar.active { display: flex; }
-    .navbar a { margin: 1rem 0; text-align: center; }
+    .navbar a { margin: 1rem 0; text-align: center; margin-left: 0; }
 
-    .hero-section {
-        flex-direction: column-reverse; padding-top: 100px; text-align: center;
+    /* --- BARRE DE CATÉGORIES (MÊME STYLE QUE PC) --- */
+    .projects-categories {
+        /* On garde le style PC */
+        width: 100% !important;
+        background-color: #fff !important; 
+        padding: 15px 10px !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+        
+        /* On désactive le comportement spécifique */
+        position: relative !important; /* Ne suit pas le scroll */
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        
+        /* On force l'alignement propre */
+        display: flex !important;
+        flex-wrap: wrap !important;     /* Passage à la ligne */
+        justify-content: center !important;
+        gap: 5px !important;
+        overflow-x: visible !important; /* Pas de scrollbar horizontale */
     }
-    .hero-image img { max-width: 280px; margin-bottom: 40px; }
-    
-    /* Ajustement Timeline Mobile */
+
+    .projects-categories a {
+        /* On s'assure que les boutons restent bleus comme sur PC */
+        background: var(--palette-blue) !important;
+        color: var(--text-light) !important;
+        padding: 8px 15px !important;
+        border-radius: 20px !important;
+        margin: 5px !important;
+        font-size: 0.85em !important;
+        display: inline-block !important;
+        white-space: nowrap;
+        border: none !important;
+    }
+
+    /* --- TIMELINE MOBILE --- */
     .timeline::after { left: 31px; }
     .timeline-item { width: 100%; padding-left: 70px; }
     .timeline-item:nth-child(even) { left: 0%; }
     .timeline-item::after { left: 18px; }
+    
+    /* Cache les barres de scroll résiduelles */
+    .projects-categories::-webkit-scrollbar { display: none; }
+}
 
-    /* Ajustement Menu Catégories Mobile */
-    .projects-categories {
-        width: 95%;
-        border-radius: 15px;
-        top: 85px; /* Ajustement sticky mobile */
-        padding: 10px 5px;
-        display: flex; /* Flex pour scroll */
-        transform: translateX(0); /* Reset du centrage absolu */
-        left: 2.5%; /* Petit hack de centrage mobile */
-        overflow-x: scroll; /* Permet de scroller horizontalement les catégories */
-        justify-content: flex-start;
+/* Conteneur parent pour les deux sections */
+.dual-sections-container {
+    display: flex;
+    gap: 20px;
+    padding: 0 10%; /* Aligné avec vos autres sections */
+    background: var(--palette-cream); /* Pour garder le fond cohérent */
+}
+
+/* On ajuste les sections pour qu'elles prennent chacune 50% */
+.half-width {
+    flex: 1;
+    padding: 40px 0 !important; /* On réduit le padding latéral car le parent s'en occupe */
+}
+
+/* Fix pour éviter l'étirement : On force une seule colonne dans ces grilles */
+.single-col {
+    grid-template-columns: 1fr !important;
+    max-width: 400px; /* Limite la largeur pour que la carte reste élégante */
+    margin: 0 auto;  /* Centre la carte dans sa moitié d'écran */
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 992px) {
+    .dual-sections-container {
+        flex-direction: column; /* On repile l'un sur l'autre sur mobile */
+        padding: 0 5%;
     }
     
-    /* Pour cacher la barre de scroll moche sur mobile */
-    .projects-categories::-webkit-scrollbar { display: none; }
-    .projects-categories { -ms-overflow-style: none; scrollbar-width: none; }
+    .half-width {
+        width: 100%;
+    }
 }
-
-/* Embed container (Sketchfab/Youtube) */
-.embed-container {
-    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-    background: #eee; margin-bottom: 20px; border-radius: 12px;
-}
-.embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-/* Style détails projet */
-.project-detail-main { padding-top: 150px; width: 90%; max-width: 1100px; margin: 0 auto; }
-.back-btn-container { margin-bottom: 30px; }
-.project-description { margin-bottom: 60px; font-size: 1.1em; }
-.project-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
