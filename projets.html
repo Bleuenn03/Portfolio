@@ -14,7 +14,7 @@
         <nav class="navbar">
             <a href="index.html">Accueil</a>
             <a href="projets.html" class="active">Projets</a>
-            <a href="contact.html">Contact</a>
+            <a href="#contact">Contact</a>
         </nav>
         <div id="menu-icon" class="fas fa-bars"></div>
     </header>
@@ -27,6 +27,7 @@
             <a href="#cat-3d">Création 3D</a>
             <a href="#cat-perso">Projets Personnels</a>
             <a href="#cat-tattoo">Flash de Tatouages</a>
+            <a href="#cat-codeart">Code/Art</a>
             <a href="#cat-audiovisuel">Audio Visuel</a>
             <a href="#cat-motion">Motion Design</a>
             <a href="#cat-gamejam">Game Jam</a>
@@ -37,16 +38,21 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <img src="assets/Affiche-min.png" alt="Refonte d'une affiche">
+                    <div class="project-card-content">
                     <h3>Refonte d'une affiche</h3>
                     <p>Refonte d'une affiche déjà existante.</p>
                     
+                    
                     <a href="projetaffichemoule.html" class="btn-projet">Voir le projet</a>
                 </div>
+                </div>
                 <div class="project-card">
-                    <img src="assets/projet-2d-2.jpg" alt="Nom du Projet">
-                    <h3>Autre Projet 2D</h3>
-                    <p>Courte description : Concept art pour un jeu, travail sur l'ambiance et les couleurs.</p>
-                    <a href="[Lien vers la page détaillée ou grand visuel]" target="_blank" class="btn-projet">Voir Détails</a>
+                    <img src="assets/illustration/Exo 1 (4).png" alt="Nom du Projet">
+                    <div class="project-card-content">
+                    <h3>Illustration</h3>
+                    <p>Apprentissage de la création d'illustrations.</p>
+                    <a href="illustration.html" target="_blank" class="btn-projet">Voir le projet</a>
+                </div>
                 </div>
                 </div>
         </section>
@@ -85,20 +91,35 @@
 
 </div>
 
-         <section id="cat-audiovisuel" class="section project-category">
+<div class="dual-sections-container"> 
+        <section id="cat-codeart" class="section project-category half-width">
+        <h2>🎨 Code/Art</h2>
+        <div class="projects-grid ">
+            <div class="project-card">
+                <img src="assets/tattoo/tattoo2.PNG" alt="Flash Tattoo">
+                <div class="project-card-content">
+                    <h3>Flash</h3>
+                    <p>Création de flashs de tatouages.</p>
+                    <a href="projettattoo.html" class="btn-projet">Voir le projet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+         <section id="cat-audiovisuel" class="section project-category half-width">
             <h2>🎨 Audiovisuel</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <img src="assets/Affiche-min.png" alt="Refonte d'une affiche">
+                    <div class="project-card-content">
                     <h3>Audiovisuel</h3>
                     <p>Courte description : Illustration numérique, réalisée avec Photoshop, style [style].</p>
                     
                     <a href="projetaudiovisuel.html" class="btn-projet">Voir le projet</a>
                 </div>
-
+                </div>
                 </div>
         </section>
-
+ </div>
 
          <section id="cat-gamejam" class="section project-category">
             <h2> Game Jam</h2>
@@ -149,10 +170,12 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <img src="assets/perso/MTELogo.PNG" alt="Projet MTE">
+                    <div class="project-card-content">
                     <h3>Projet BTS MTE</h3>
                     <p>Création d'un logo dans le but de faire des stickers.</p>
                     
                     <a href="projetMTE.html" class="btn-projet">Voir le projet</a>
+                </div>
                 </div>
                 <div class="project-card">
                     <img src="assets/projet-2d-2.jpg" alt="Nom du Projet">
