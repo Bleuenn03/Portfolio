@@ -3,10 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détail du Projet - Flashs de Tatouages</title> 
+    <title>Détail du Projet - Stickers MTE</title> 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- CONFIGURATION DE LA MISE EN AVANT (HAUT DE PAGE) --- */
+        .highlight-section {
+            display: flex; gap: 40px; align-items: flex-start; justify-content: center;
+            margin-bottom: 60px; flex-wrap: wrap;
+        }
+        .highlight-main-image { flex: 1; min-width: 300px; max-width: 600px; }
+        .highlight-main-image img {
+            width: 100%; height: 533px; object-fit: contain;
+            border-radius: 12px; background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: block;
+        }
+        .highlight-video { flex: 0 0 300px; min-width: 280px; }
+        .shorts-container {
+            position: relative; padding-bottom: 177.77%; height: 0;
+            overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .shorts-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
+        /* --- NOUVELLE CONFIGURATION GRILLE SECONDAIRE (1 GAUCHE / 2 DROITE) --- */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+            grid-template-rows: auto auto; /* 2 rangées qui s'adaptent */
+            gap: 30px; /* Espace entre les images */
+            margin-bottom: 50px;
+            /* On force une hauteur minimale globale pour que la grille ait de l'allure sur PC */
+            min-height: 600px; 
+        }
+
+        /* L'élément de gauche qui prend toute la hauteur */
+        .split-item-left-tall {
+            grid-column: 1; 
+            grid-row: 1 / span 2; 
+            height: 100%;
+            display: flex; flex-direction: column;
+        }
+
+        /* Les éléments de droite */
+        .split-item-right {
+            grid-column: 2; 
+            display: flex; flex-direction: column;
+            height: 100%; /* Important pour remplir l'espace */
+        }
+
+        /* Style commun des images de la grille */
+        .split-img-wrapper {
+            flex-grow: 1; 
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background-color: #fff; /* Fond blanc propre */
+            display: flex; /* Permet de centrer l'image si elle est plus petite */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- C'EST ICI LE CHANGEMENT PRINCIPAL --- */
+        .split-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            /* On passe de 'cover' à 'contain' pour ne pas couper l'image */
+            object-fit: contain; 
+            display: block;
+        }
+        
+        .split-caption {
+            text-align: center; margin-top: 15px; font-weight: 600;
+        }
+
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 992px) {
+            .highlight-section { flex-direction: column; align-items: center; gap: 20px; }
+            .highlight-main-image img { height: auto; max-height: 400px; }
+            .highlight-video { width: 100%; max-width: 300px; }
+
+            /* Responsive de la nouvelle grille : tout empiler */
+            .split-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 40px; min-height: auto; }
+            .split-item-left-tall { grid-column: auto; grid-row: auto; height: auto;}
+            .split-img-wrapper { min-height: auto; height: auto; }
+             .split-img-wrapper img { height: auto; max-height: 500px; object-fit: contain; }
+        }
+    </style>
 </head>
 <body>
 
@@ -36,41 +119,52 @@
             <a href="projets.html#cat-gamejam">Game Jam</a>
         </nav>
 
-       <section class="detail-content">
-            <h1>Affiche Moules Farcies</h1>
-            
-            <p class="subtitle">Catégorie : Créations 2D / Print</p>
+        <section class="detail-content">
+            <h1>Stickers MTE</h1>
+            <p class="subtitle">Catégorie : Créations 2D / Stickers</p>
 
-            <div class="full-image-container" style="text-align: center; margin-bottom: 40px;">
-                <img src="assets/perso/MTELogo.PNG" alt="Logo MTE" 
-                     style="width: 100%; max-width: 600px; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <p style="margin-top: 10px; font-style: italic; color: #647295;">Logo MTE</p>
+            <div class="highlight-section">
+                <div class="highlight-main-image">
+                    <img src="assets/perso/MTELogo.PNG" alt="Logo MTE">
+                    <p class="split-caption" style="font-style: italic; color: #647295;">Logo final MTE</p>
+                </div>
+
+                <div class="highlight-video">
+                    <div class="shorts-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/8l41NWEpML8?autoplay=1&mute=1&loop=1&playlist=8l41NWEpML8" 
+                            title="Vidéo stickers" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="split-caption">Rendu en vidéo</p>
+                </div>
             </div>
 
-            <div class="flyers-grid" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 50px;">
+            <hr style="border: 0; height: 1px; background: #ddd; margin-bottom: 50px; width: 80%; margin-left: auto; margin-right: auto;">
+
+            <div class="split-grid">
                 
-                <div class="flyer-item" style="flex: 1; min-width: 300px;">
-                    <img src="assets/perso/MTEcroquis.png" alt="Croquis" 
-                         style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Croquis du logo</p>
+                <div class="split-item-left-tall">
+                    <div class="split-img-wrapper">
+                        <img src="assets/perso/MTEcroquis.png" alt="Croquis">
+                    </div>
+                    <p class="split-caption">Croquis du logo</p>
                 </div>
 
-                <div class="flyer-item" style="flex: 1; min-width: 300px;">
-                    <img src="assets/perso/MTEiterations.png" alt="Itérations" 
-                         style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Itérations</p>
+                <div class="split-item-right">
+                    <div class="split-img-wrapper">
+                        <img src="assets/perso/MTEiterations.png" alt="Itérations">
+                    </div>
+                    <p class="split-caption">Itérations</p>
                 </div>
 
-                 <div class="flyer-item" style="flex: 1; min-width: 300px;">
-                    <img src="assets/perso/MTEtypo.png" alt="Typographie" 
-                         style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Typographie</p>
-                </div>
-
-                 <div class="flyer-item" style="flex: 1; min-width: 300px;">
-                    <img src="assets/perso/MTEvideo.MOV" alt="Vidéo stickers" 
-                         style="width: 100%; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
-                    <p style="text-align: center; margin-top: 10px; font-weight: 600;">Vidéo sticker</p>
+                 <div class="split-item-right">
+                    <div class="split-img-wrapper">
+                        <img src="assets/perso/MTEtypo.png" alt="Typographie">
+                    </div>
+                    <p class="split-caption">Typographie</p>
                 </div>
 
             </div>
@@ -78,15 +172,15 @@
             <div class="project-description">
                 <h2>Détails du Projet</h2> 
                 <p>
-                    Réalisation d'une identité visuelle pour un événement culinaire. <br>
-                    L'objectif était d'améliorer une affiche déjà existante en format A5, accompagnée d'un flyer explicatif en format A3 recto/verso, détaillant le programme et les informations complémentaires.
+                    Réalisation d'un stickers pour la filière BTS MTE (motorisation Toutes Energies) de Brest. <br>
+                    L'objectif était de créer un stickers représentant la filière MTE et leurs passions.
+                    Le stickers devait être placé sur les voitures, il devait être réfléchissant pour être visible même la nuit.
                 </p>
-                <p>
-                    Logiciels utilisés : Adobe Photoshop, Illustrator.<br>
-                    Compétences : Mise en page, Graphisme, Choix typographiques, palette de couleurs
+                <p style="margin-top: 15px;">
+                    <strong>Logiciels utilisés :</strong> Adobe Photoshop, Illustrator.<br>
+                    <strong>Compétences :</strong> Graphisme, Choix typographiques, palette de couleurs.
                 </p>
-                
-                </div> 
+            </div> 
         </section>
     </main>
 
