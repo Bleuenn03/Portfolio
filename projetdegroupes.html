@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du Projet - Audiovisuel</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .project-block {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: center; /* Centre verticalement l'image et le texte */
+            flex-wrap: wrap;
+        }
+
+        .project-image {
+            flex: 1; /* Prend environ 40-50% de la largeur */
+            min-width: 300px;
+        }
+
+        .project-image img, .project-image iframe {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .project-info {
+            flex: 1; /* Prend l'autre moitié */
+            min-width: 300px;
+        }
+
+        .project-info h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: var(--palette-berry);
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Style du bouton personnalisé */
+        .btn-external {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--palette-berry); /* Ou votre couleur principale */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-external:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 850px) {
+            .project-block {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">Votre Nom</a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="projets.html" class="active">Projets</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        <div id="menu-icon" class="fas fa-bars"></div>
+    </header>
+
+    <main class="project-detail-main">
+        
+        <div class="back-btn-container">
+            <a href="projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+        </div>
+
+        <nav class="projects-categories">
+            <a href="projets.html#cat-2d">Créations 2D</a>
+            <a href="projets.html#cat-3d">Création 3D</a>
+            <a href="projets.html#cat-perso">Projets Personnels</a>
+            <a href="projets.html#cat-tattoo">Flash de Tatouages</a>
+            <a href="projets.html#cat-groupe">Projets groupes</a>
+            <a href="projets.html#cat-audiovisuel">Audiovisuel</a>
+            <a href="projets.html#cat-motion">Motion Design</a>
+            <a href="projets.html#cat-gamejam">Game Jam</a>
+        </nav>
+
+       <main class="project-detail-main">
+        <div class="back-btn-container">
+            <a href="projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+        </div>
+
+        <section class="detail-content">
+            <h1>Projets de groupes</h1>
+
+            <div class="project-block">
+                <div class="project-image">
+                    <img src="assets/perso/UXDesign.png" alt="Moodboard B-Roll">
+                </div>
+                <div class="project-info">
+                    <h2>UX Design</h2>
+                    <p>Processus d'UX (comprendre, définir, imaginer) thème: l'orientation scolaire</p>
+                    <a href="https://drive.google.com/file/d/1Q01BRlWWYLKvtYT58WQhD-7vXMIntwRQ/view?usp=sharing" target="_blank" class="btn-external">Voir le projet complet</a>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="project-image">
+                        <img src="assets/perso/pasdpofredo.png" alt="Moodboard B-Roll">
+                    </div>
+                
+                <div class="project-info">
+                    <h2>Pas d'po le Fredo</h2>
+                    <p>Game design document du jeu de fin de ma 1ere année (2022)</p>
+                    <a href="https://drive.google.com/file/d/1qG5jYov1koBzOxO5uIK86ju6Tr-yXGtP/view?usp=sharing" target="_blank" class="btn-external"> Voir le document</a>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="project-image">
+                    <img src="assets/perso/boomer.webp" alt="Moodboard B-Roll">
+                </div>
+                <div class="project-info">
+                    <h2>Projet Boomer</h2>
+                    
+                    <p>Projet en groupe, nous devions réaliser un advergame pour mettre en avant le chewing-gum de la marque Boomer qui n’a pas bien fonctionné en Europe.</p>
+                    <a href="https://www.canva.com/design/DAGqn2BhabU/vrInrb0p7SZLZz32_zI6Jg/view?utm_content=DAGqn2BhabU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hb2de28231d" target="_blank" class="btn-external">Voir le document</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
