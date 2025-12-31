@@ -99,12 +99,12 @@ section {
     left: 0;
     width: 100%;
     padding: 1rem 10%;
-    background: var(--palette-blue);
+    background: var(--palette-berry);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000; /* Le plus haut niveau */
-    box-shadow: 0 2px 15px rgba(43, 38, 45, 0.15);
+    box-shadow: 0 2px 15px #2b262d;
     height: var(--header-height);
 }
 
@@ -149,14 +149,55 @@ section {
 /* ------------------------------------- */
 /* 3. ACCUEIL */
 /* ------------------------------------- */
+/* 1. On modifie la section Hero pour le fond et le positionnement */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 140px; /* Espace pour le header */
-    min-height: 90vh;
-   
-    padding-bottom: 60px;
+    padding-top: 140px; 
+    padding-bottom: 180px; /* On augmente l'espace en bas pour la vague */
+    min-height: 95vh;
+    background-color: var(--palette-blue); /* Fond bleu pour faire ressortir la vague */
+    position: relative; /* Indispensable pour placer la vague */
+    overflow: hidden;
+}
+
+/* 2. On change la couleur du texte pour qu'il soit lisible sur le bleu */
+.hero-content h1, 
+.hero-content h1 p, 
+.hero-content h2 {
+    color: var(--text-light) !important;
+}
+
+/* 3. Style spécifique pour le Shape Divider (la vague) */
+.custom-shape-divider-bottom {
+    position: absolute;
+    bottom: -1px; /* On le colle bien en bas, le -1px évite un filet vide */
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 10; /* Doit être au-dessus de l'image (z-index 5) */
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    
+    /* MODIFIE CETTE VALEUR : */
+    /* Plus tu diminues ce chiffre (ex: 80px), plus la vague sera "plate" et basse */
+    height: 90px !important; 
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    /* La couleur de remplissage doit être la même que la section SUIVANTE (Cream) */
+    fill: var(--palette-cream); 
+}
+
+/* 4. Ajustement du bouton pour qu'il ressorte sur le bleu */
+.hero-section .btn {
+    background-color: var(--palette-berry);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content h1 {
@@ -165,13 +206,44 @@ section {
     color: var(--palette-blue);
 }
 
+/* Le conteneur prend toute la hauteur et définit la forme de la vague */
+.hero-image {
+    position: absolute;
+    top: 40px; /* Ajuste pour compenser le padding-top de la section */
+    right: 0; /* Ajuste la distance par rapport au bord droit */
+    width: 40%; /* Ajuste la largeur de la zone de l'image ici */
+    height: 100%;
+    z-index: 5;
+    background-color: transparent;
+    
+    
+    /* C'EST ICI QU'ON MET LA VAGUE : Elle reste fixe par rapport au site */
+    clip-path: url(#smoothWave) !important;
+    overflow: hidden;
+}
+
+/* L'image bouge LIBREMENT à l'intérieur de la vague sans la déformer */
 .hero-image img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    border: 4px solid var(--palette-berry);
-    box-shadow: 0 10px 30px rgba(159, 73, 110, 0.2);
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Garde 'cover' pour remplir toute la vague */
+    
+    /* Réglage du zoom : modifie scale pour rétrécir ton dessin */
+    transform: scale(0.5) !important; 
+    
+    /* Réglage de la position : pousse ton dessin vers la droite pour le centrer dans le creux */
+    object-position: -95% center !important;
+    transform: translateX(0%) !important;
+    
+    /* On enlève le clip-path d'ici car il est sur le parent maintenant */
+    clip-path: none !important; 
+}
+/* Ajustement du texte pour qu'il ne touche pas la vague */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 70%;
+    padding-right:0%; 
 }
 
 /* Timeline */
@@ -208,11 +280,61 @@ section {
 .skill-item i { font-size: 3.5em; color: var(--palette-berry); margin-bottom: 20px; }
 
 /* Contact */
-.contact-section { text-align: center; background: #fff; }
-.social-links a { font-size: 2.2em; margin: 0 15px; color: var(--palette-blue); }
-.social-links a:hover { color: var(--palette-berry); }
-.footer { text-align: center; padding: 30px 10%; background: var(--palette-dark); color: var(--palette-cream); }
+/* 1. On remplit toute la section avec votre bleu */
+.contact-section {
+    position: relative;
+    background-color: var(--palette-blue) !important; /* Fond bleu plein */
+    color: #ffffff !important; /* Texte en blanc pour la lisibilité */
+    padding-top: 120px !important; /* Espace pour la vague */
+    padding-bottom: 80px;
+    text-align: center;
+    overflow: hidden;
+}
 
+/* 2. On positionne la vague parfaitement en haut */
+.custom-shape-divider-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 10;
+    /* On retourne le SVG pour que le plat soit en haut */
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top svg {
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+/* 3. La couleur de la forme doit être celle de la section du DESSUS (blanc) */
+.custom-shape-divider-top .shape-fill {
+    fill: #ffffff; 
+}
+
+/* 4. On s'assure que les textes sont blancs et visibles */
+.contact-section h2, .contact-section p, .contact-details p {
+    color: #ffffff !important;
+    position: relative;
+    z-index: 20;
+}
+
+.contact-section a {
+    color: var(--palette-cream) !important; /* Liens en beige pour qu'ils ressortent */
+}
+.footer {
+    background-color: var(--palette-dark); /* Ou var(--palette-blue) */
+    color: white;
+    padding: 30px 10%;
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
 /* ------------------------------------- */
 /* 4. PROJETS (Navigation & Grille) */
 /* ------------------------------------- */
