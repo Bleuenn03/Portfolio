@@ -345,10 +345,11 @@ section {
 /* 4. PROJETS (Navigation & Grille) */
 /* ------------------------------------- */
 /* Ce réglage s'applique à TOUTES vos pages */
-main {
-    padding-top: 150px; /* Ajustez selon la hauteur de votre header */
+/* Cible le <main> uniquement s'il contient le titre de la page projet ou une section spécifique */
+.main-projets, 
+.project-detail-section, .project-detail-main {
+    padding-top: 120px;
 }
-
 .main-projets {
     padding-top: 180px; /* On descend le contenu */
     
