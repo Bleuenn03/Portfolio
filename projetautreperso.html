@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du Projet - Flashs de Tatouages</title> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .tattoo-grid-large {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .tattoo-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .tattoo-grid-small img, .tattoo-grid-large img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .tattoo-grid-small img:hover, .tattoo-grid-large img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Titre des sous-sections */
+        .sub-gallery-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--palette-dark);
+            margin-top: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">Bergeault Bleuenn</a>
+        <nav class="navbar">
+            <a href="index.html">Accueil</a>
+            <a href="projets.html" class="active">Projets</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        <div id="menu-icon" class="fas fa-bars"></div>
+    </header>
+
+    <main class="project-detail-main">
+        
+       
+
+        <nav class="projects-categories">
+            <a href="projets.html#cat-2d">Créations 2D</a>
+            <a href="projets.html#cat-3d">Création 3D</a>
+            <a href="projets.html#cat-motion">Motion Design</a>
+            <a href="projets.html#cat-groupe">Projets groupes</a>
+            <a href="projets.html#cat-audiovisuel">Audiovisuel</a>
+            <a href="projets.html#cat-gamejam">Game Jam</a>
+            <a href="projets.html#cat-perso">Projets Personnels</a>
+        </nav>
+        <section class="detail-content">
+            <h1>Galerie de Flashs de Tatouages</h1>
+            
+            <p class="subtitle">Catégorie : Flash de Tatouages</p>
+
+            <div class="project-description">
+                <p>
+                    Cette galerie présente une sélection de mes créations de flashs, conçues pour être des motifs de tatouage uniques.
+                    Mes designs explorent différents styles, allant du old school (traditionnel), à la gravure, à l'ornementale, et globalement du blackwork.
+                </p>
+            </div>
+
+            <div class="infographic-main-row" style="display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 60px;">
+        
+    <div class="poster-final" style="flex: none; text-align: center;">
+        <img src="assets/perso/bmwe30.png" alt="Affiche Finale" 
+             style="width: 650px; max-width: 90%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+        <p style="margin-top: 15px; font-weight: 600; color: #333; font-size: 1.1em;">
+            Création d'un mix entre le logo BMW et ce qui représente le mieux une BMW E30 ( la calandre)
+        </p>
+    </div>
+
+    <div class="poster-sources" style="flex: none; width: 350px;">
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+            <img src="assets/perso/bmwe30croquis.jpg" style="width: 100%; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+           
+        </div>
+        <p style="text-align: center ; color: #647295; font-size: 0.8em; line-height: 1.2;">
+            Croquis
+        </p>
+    </div>
+</div>
+            
+            <h2 class="sub-gallery-title">Dessins</h2>
+            <div class="tattoo-grid-large">
+                <img src="assets/perso/IMG_1688.PNG" alt="Flash Tattoo 1" loading="lazy">
+                <img src="assets/perso/Hadesprojet.PNG" alt="Flash Tattoo 13" loading="lazy">
+                <img src="assets/perso/IMG_1687.PNG" alt="Flash Tattoo 3" loading="lazy">
+            </div>
+
+            
+            <div class="tattoo-grid-large">
+              
+
+                <img src="assets/perso/dessin4.png" alt="Flash Tattoo 2" loading="lazy">
+                <img src="assets/perso/portrait.png" alt="Flash Tattoo 2" loading="lazy">
+                <img src="assets/perso/IMG_1686.PNG" alt="Flash Tattoo 3" loading="lazy">
+                <img src="assets/perso/tattoo13.PNG" alt="Flash Tattoo 3" loading="lazy">
+                <img src="assets/perso/tattoo14.PNG" alt="Flash Tattoo 3" loading="lazy">
+                  <img src="assets/perso/dessin2.png" alt="Flash Tattoo 2" loading="lazy">
+                  <img src="assets/perso/Dessin01.png" alt="Flash Tattoo 2" loading="lazy">
+                <img src="assets/perso/dessin3.png" alt="Flash Tattoo 2" loading="lazy">
+                
+                
+
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Bergeault Bleuenn. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

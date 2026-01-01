@@ -344,8 +344,14 @@ section {
 /* ------------------------------------- */
 /* 4. PROJETS (Navigation & Grille) */
 /* ------------------------------------- */
+/* Ce réglage s'applique à TOUTES vos pages */
+main {
+    padding-top: 150px; /* Ajustez selon la hauteur de votre header */
+}
+
 .main-projets {
-    padding-top: 120px; /* On descend le contenu */
+    padding-top: 180px; /* On descend le contenu */
+    
 }
 
 .main-projets h1 {
@@ -363,7 +369,7 @@ section {
     margin: 0 0 40px 0;          /* Marge en bas pour ne pas coller au contenu */
     
     /* 2. Effet "Sticky" (Reste collé en haut) */
-    position: sticky;            
+    position: fixed;            
     top: 75px;                   /* S'arrête juste sous le header */
     z-index: 900;                /* Reste au-dessus du contenu */
     
